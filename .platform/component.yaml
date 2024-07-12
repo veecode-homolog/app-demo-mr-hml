@@ -1,0 +1,20 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: app-demo-mr-hml
+  description: "app-demo-mr-hml"
+  annotations:
+    github.com/project-slug: veecode-homolog/app-demo-mr-hml
+    backstage.io/techdocs-ref: dir:..
+    backstage.io/kubernetes-id: "app-demo-mr-hml"
+    vault.io/secrets-path: "app-demo-mr-hml"
+    grafana/dashboard-selector: "app-demo-mr-hml"
+    grafana/alert-label-selector: "alertname=app-demo-mr-hml"
+    argocd/proxy-url: '/argocd/api'
+    argocd/app-name: "app-demo-mr-hml"
+    kong-manager/service-name: veecode-homolog.app-demo-mr-hml-service-0.8080
+    kong-manager/instance: /kong-manager/api
+spec:
+  type: service
+  lifecycle: experimental
+  owner: "group:default/admin"

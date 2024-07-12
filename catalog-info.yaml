@@ -1,0 +1,8 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: app-demo-mr-hml-location
+  description: Location to import all app-demo-mr-hml catalog components
+spec:
+  targets:
+    - ./.platform/*.yaml

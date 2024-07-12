@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-demo-mr-hml 
+spec:
+  selector:
+    matchLabels:
+      app: app-demo-mr-hml
+  template:
+    metadata:
+      labels:
+        app: app-demo-mr-hml
+    spec:
+      containers:
+        - image: okteto.dev/java-gradle-app-demo-mr-hml:1.0.0
+          name: app-demo-mr-hml
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-demo-mr-hml
+spec:
+  type: ClusterIP
+  ports:
+    - name: "app-demo-mr-hml"
+      port: 8080
+  selector:
+    app: app-demo-mr-hml
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-demo-mr-hml
+  annotations:
+    dev.okteto.com/generate-host: app-demo-mr-hml
+spec:
+  rules:
+    - http:
+        paths:
+          - backend:
+              service:
+                name: app-demo-mr-hml
+                port:
+                  number: 8080
+            path: /
+            pathType: ImplementationSpecific

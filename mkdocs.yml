@@ -1,0 +1,8 @@
+site_name: "app-demo-mr-hml"
+site_description: "app-demo-mr-hml"
+
+nav:
+  - Introduction: index.md
+
+plugins:
+  - techdocs-core
